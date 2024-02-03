@@ -1,4 +1,4 @@
-import { capitalize,reverseStr,Calculator,ceaserCipher } from './cofeFile.js'
+import { capitalize,reverseStr,Calculator,ceaserCipher,analyzeArray } from './cofeFile.js'
 
 test('check for truthy', () => {
     expect(capitalize("Hello")).toBeTruthy()
@@ -67,4 +67,37 @@ test('puncutation', () => {
 
 test('negative key', () => {
     expect(ceaserCipher('hi',-3)).toThrow
+})
+
+test('return type', () => {
+    expect(typeof analyzeArray([1,2,3,4,5])).toBe('object')
+})
+
+test('contains', () => {
+    expect(analyzeArray([1,2,3,4,5])).toHaveProperty('average')
+    expect(analyzeArray([1,2,3,4,5])).toHaveProperty('min')
+    expect(analyzeArray([1,2,3,4,5])).toHaveProperty('max')
+    expect(analyzeArray([1,2,3,4,5])).toHaveProperty('length')
+})
+
+test('average', () => {
+    expect(analyzeArray([1,2,3,4,5])).toHaveProperty('average',3)
+})
+
+test('min', () => {
+    expect(analyzeArray([1,2,3,4,5])).toHaveProperty('min',1)
+})
+
+test('length', () => {
+    expect(analyzeArray([1,2,3,4,5])).toHaveProperty('length',5)
+})
+
+test('max', () => {
+    expect(analyzeArray([1,2,3,4,5])).toHaveProperty('max',5)
+})
+
+
+test('final', () => {
+    const obj = analyzeArray([2,5,6,7,8])
+    expect(obj).toStrictEqual({"average": 5.6, "length": 5, "max": 8, "min": 2})
 })

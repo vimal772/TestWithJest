@@ -46,3 +46,32 @@ export function ceaserCipher(str,key) {
     }
     return msg
 }
+
+export function analyzeArray(numArr) {
+    function findAverage(Arr) {
+        if(Arr.length === 0) throw new Error('Not an Array')
+        let total = 0
+        for(let i=0;i<Arr.length;i++) {
+            total += Arr[i]
+        }
+        let avg = total / Arr.length
+        return avg
+    }
+
+    function findMin(numArr) {
+        if(numArr.length === 0) throw new Error('Not an Array')
+        return Math.min(...numArr)
+    }
+
+    function findMax(numArr) {
+        if(numArr.length === 0) throw new Error('Not an Array')
+        return Math.max(...numArr)
+    }
+
+    return {
+        average: findAverage(numArr),
+        min: findMin(numArr),
+        max: findMax(numArr),
+        length: numArr.length
+    }
+}
